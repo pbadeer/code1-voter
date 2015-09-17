@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="voter">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeOne Votes</title>
+
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300|Roboto:700,400,300' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-animate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body ng-controller="main">
+  <br>
+  <div class="container">
+    <h1 class="logo">Code<img src="img/logo.png"> Audience Choice</h1>
+    <div class="row">
+      <div class="col-md-6 left">
+        <div class="panel panel-default">
+          <div class="panel-heading green">
+            <h3>Teams</h3>
+          </div>
+          <div class="panel-body">
+            <div class="col-sm-4 col-xs-6 teams" ng-repeat="t in $storage.teamsData.rows" ng-cloak>
+              <img ng-src="{{t.value}}" alt>
+              <h5>{{t.id}}: {{t.key}}</h5>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <button class="btn btn-success" ng-click="startTimer()">Start Voting</button>
+            <button class="btn btn-warning" ng-click="resetTimer()">Reset</button>
+            <button class="btn btn-info pull-right" ng-click="revealWinner()">Reveal Winner</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 right">
+        <div class="panel panel-default">
+          <div class="panel-heading blue">
+            <h3>How to vote</h3>
+          </div>
+          <div class="panel-body">
+            <p>Send a text message to the number below, containing the team number you want to vote for.</p>
+            <h2 class="text-center"><span class="label label-success">402-999-0243</span></h2>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading blue">
+            <h3>
+              Votes
+              <small class="pull-right">
+                Submitted: <span class="label label-info" ng-cloak>{{$storage.votesData.total_rows}}/{{$storage.teamsData.total_rows * 3}}</span>
+                Time remaining: <span class="label label-info" ng-cloak>{{$storage.count}} seconds</span>
+              </small>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div class="chart">
+              <div class="bar" ng-repeat="t in $storage.allMessages track by $index | orderBy:random"
+                ng-style="{'height': (t * 1) / $storage.topVote * 100 + '%',
+                'left': $index * 55 + 'px'}" ng-cloak>{{t}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="winner" ng-if="winner">
+    <div class="container">
+      <span ng-if="stage1">The winner is...</span>
+      <span ng-if="stage2">Team {{$storage.topTeam}}</span>
+      <span ng-if="stage3">with {{$storage.topVote}} votes</span>
+    </div>
+  </div>
+
+</body>
+</html>
