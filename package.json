@@ -1,0 +1,25 @@
+{
+  "name": "code1-voter",
+  "version": "1.0.0",
+  "description": "Dashboard for audience choice vote",
+  "main": "server.js",
+  "dependencies": {
+    "socket.io": "^1.3.6",
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pbadeer/code1-voter.git"
+  },
+  "author": "Preston Badeer, Steve Franzen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pbadeer/code1-voter/issues"
+  },
+  "homepage": "https://github.com/pbadeer/code1-voter#readme"
+}
