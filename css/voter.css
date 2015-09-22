@@ -17,13 +17,13 @@
   animation: bargrowth 1000ms ease;
   position: absolute;
   bottom: 0;
-  width: 40px;
+  width: 25px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 
   color: #fff;
-  font-size: 2em;
+  font-size: 1.5em;
   text-align: center;
   font-family: "Roboto Condensed",sans-serif;
 
@@ -38,7 +38,7 @@
 }
 
 html {
-  background: url('../img/bg.jpg') no-repeat center center fixed;
+  background: url('../images/bg.jpg') no-repeat center center fixed;
   height: 100%;
 }
 body {
@@ -61,14 +61,14 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 .logo img {
-  height: 0.75em;
-  margin-top: -0.25em;
+  height: 2.50em;
+  margin-top: -.00em;
 }
 
 div.teams > img {
   min-width: 100%;
   max-width: 100%;
-  max-height: 70px;
+  max-height: 100px;
 }
 .panel {
   background-color: rgba(255,255,255,0.75);
@@ -90,6 +90,10 @@ div.teams > img {
 .panel .panel-body {
   background-color: transparent;
 }
+.panel .panel-body h5 {
+	font-size: 2em;
+}
+
 .panel .panel-heading.green {
   color: #fff;
   background-color: #04be5b;
@@ -122,7 +126,7 @@ div.teams > img {
 }
 .winner.ng-enter.ng-enter-active,
 .winner span.ng-enter.ng-enter-active {
-  opacity: 1;
+  opacity: .5;
 }
 .winner > div {
   margin-top: 5em;
@@ -132,7 +136,7 @@ div.teams > img {
   line-height: 2em;
   display: block;
 }
-.winner span:nth-of-type(2) {
+.winner span:nth-of-type(3) {
   font-size: 9em;
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
