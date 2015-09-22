@@ -22,7 +22,8 @@
 <body ng-controller="main">
   <br>
   <div class="container">
-    <h1 class="logo">Code<img src="images/logo.png"> Audience Choice</h1>
+    <!-- <h1 class="logo">Code<img src="images/logo.png"> Audience Choice</h1> -->
+    <h1 class = "logo"><img src="images/codeOne.png"</img> Audience Choice</h1>
     <div class="row">
       <div class="col-md-6 left">
         <div class="panel panel-default">
@@ -30,16 +31,14 @@
             <h3>Teams</h3>
           </div>
           <div class="panel-body">
-            <div class="col-sm-4 col-xs-6 teams" ng-repeat="t in $storage.teamsData.rows" ng-cloak>
-              <img ng-src="{{t.value}}" alt>
-              <h5>{{t.id}}: {{t.key}}</h5>
+            <div class="col-sm-4 col-xs-6 teams" ng-repeat="team in $storage.teamsData.rows" ng-cloak>
+              <img ng-src="{{team.value}}" alt>
+              <h5>{{team.id}}: {{team.key}}</h5>
             </div>
           </div>
         </div>
         <div class="panel panel-default">
           <div class="panel-body">
-            <button class="btn btn-success" ng-click="startTimer()">Start Voting</button>
-            <button class="btn btn-warning" ng-click="resetTimer()">Reset</button>
             <button class="btn btn-info pull-right" ng-click="revealWinner()">Reveal Winner</button>
           </div>
         </div>
@@ -60,16 +59,18 @@
             <h3>
               Votes
               <small class="pull-right">
-                Submitted: <span class="label label-info" ng-cloak>{{$storage.votesData.total_rows}}/{{$storage.teamsData.total_rows * 3}}</span>
-                Time remaining: <span class="label label-info" ng-cloak>{{$storage.count}} seconds</span>
+                Submitted: <span class="label label-info" ng-cloak>{{$scope.totalVotes}}/{{$storage.teamsData.total_rows * 3}}</span>
               </small>
             </h3>
           </div>
           <div class="panel-body">
             <div class="chart">
-              <div class="bar" ng-repeat="t in $storage.allMessages track by $index | orderBy:random"
+              <!-- <div class="bar" ng-repeat="t in $storage.allMessagesShuffled track by $index"
                 ng-style="{'height': (t * 1) / $storage.topVote * 100 + '%',
-                'left': $index * 55 + 'px'}" ng-cloak>{{t}}</div>
+                'left': $index * 35 + 'px'}" ng-cloak>{{t}}</div> -->
+                <div class="bar" ng-repeat="t in $storage.allMessages track by $index"
+                ng-style="{'height': (t * 1) / $storage.topVote * 100 + '%',
+                'left': $index * 15 + 'px'}" ng-cloak>{{t}}</div>
             </div>
           </div>
         </div>
